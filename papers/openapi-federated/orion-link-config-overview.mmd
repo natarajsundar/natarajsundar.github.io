@@ -1,0 +1,36 @@
+flowchart TB
+  subgraph Registry["Orion metadata config"]
+    H[HTTP config]
+    S[Authentication secrets config]
+    HD[Header config]
+    U[URL parameters config]
+    Q[Query parameters config]
+  end
+
+  subgraph Client["Client application"]
+    OC[Orion client]
+    P[Payload]
+  end
+
+  subgraph Orion["Orion server"]
+    TC[Target client]
+    B[Bootstrap / warmup]
+  end
+
+  subgraph Target["Target server"]
+    TS[Target service]
+    TSP[Target server properties]
+  end
+
+  P --> OC
+  OC -- "2. Orion service call" --> TC
+  H -- "1. Load client net config" --> TC
+  S -- "1. Load client net config" --> TC
+  HD -- "4. Load server call config" --> TC
+  U -- "4. Load server call config" --> TC
+  Q -- "4. Load server call config" --> TC
+  B -. bootstrap .-> TC
+  TSP -. server metadata .-> TC
+  TC -- "5. Target service call" --> TS
+  TS -- "6. Target service response" --> TC
+  TC -- "7. Orion service response" --> OC

@@ -1,0 +1,38 @@
+flowchart TB
+  subgraph Inputs["Federated consumption model"]
+    C1[Clients / development teams]
+    C2[Distributed integrations]
+    A1[API servers]
+  end
+
+  O["Orion Link\nFederated OpenAPI client gateway"]
+
+  subgraph Capabilities["Core capabilities"]
+    F1[OpenAPI-centric client generation]
+    F2[Shared / dedicated pool deployment]
+    F3[Library of generated clients]
+    F4[Configuration and version management]
+    F5[Sidecar deployment]
+    F6[Monitoring and plug-and-play extensibility]
+  end
+
+  subgraph Outcomes["Operational outcomes"]
+    R1[Reduce boilerplate code]
+    R2[Centralize configuration]
+    R3[Manage version transitions]
+    R4[Scale API consumption consistently]
+  end
+
+  C1 --> O
+  C2 --> O
+  O --> A1
+  F1 --> O
+  F2 --> O
+  F3 --> O
+  F4 --> O
+  F5 --> O
+  F6 --> O
+  O --> R1
+  O --> R2
+  O --> R3
+  O --> R4

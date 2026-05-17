@@ -1,0 +1,21 @@
+sequenceDiagram
+  autonumber
+  actor U as User / Application
+  participant E as External API Spec Source
+  participant O as Orion Link
+  participant R as Client Library / Pool / Sidecar
+
+  U->>E: Request external OpenAPI specification
+  E-->>U: Return API spec (YAML / JSON)
+  U->>O: Submit spec + configurations
+  Note over O: Parse spec and generate strongly typed client
+  Note over O: Configure validation, logging, and dashboards
+  Note over O: Publish library with versioning
+  O->>R: Deploy to heterogeneous pool, common pool, or sidecar
+  U->>R: Invoke API request
+  R->>O: Apply extensions (auth, caching, etc.)
+  O->>E: Forward API call
+  E-->>O: Return API response
+  O->>O: Validate response and log
+  O-->>U: Return response
+  O-->>R: Push server-injected updates (if any)

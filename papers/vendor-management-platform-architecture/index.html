@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inside the Vendor Management Platform's Architecture | Nataraj Agaram Sundar; Tejas Morabia; Hari Rangarajan, Ph.D.; Piyush Shrivastava; Jeganathan Srinivasan</title>
+  <meta name="description" content="Scholar-ready technical report on eBay's Vendor Management Platform (VMP), standardizing vendor onboarding, connectors, and lifecycle operations at scale.">
+  <link rel="canonical" href="https://natarajsundar.github.io/papers/vendor-management-platform-architecture/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Inside the Vendor Management Platform's Architecture">
+  <meta property="og:description" content="Scholar-ready technical report on eBay's Vendor Management Platform (VMP), standardizing vendor onboarding, connectors, and lifecycle operations at scale.">
+  <meta property="og:url" content="https://natarajsundar.github.io/papers/vendor-management-platform-architecture/">
+  <meta property="og:image" content="https://natarajsundar.github.io/papers/vendor-management-platform-architecture/vmp-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Inside the Vendor Management Platform's Architecture">
+  <meta name="twitter:description" content="Scholar-ready technical report on eBay's Vendor Management Platform (VMP), standardizing vendor onboarding, connectors, and lifecycle operations at scale.">
+  <meta name="twitter:image" content="https://natarajsundar.github.io/papers/vendor-management-platform-architecture/vmp-preview.png">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <meta name="citation_title" content="Inside the Vendor Management Platform's Architecture">
+  <meta name="citation_author" content="Nataraj Agaram Sundar">
+  <meta name="citation_author" content="Tejas Morabia">
+  <meta name="citation_author" content="Hari Rangarajan, Ph.D.">
+  <meta name="citation_author" content="Piyush Shrivastava">
+  <meta name="citation_author" content="Jeganathan Srinivasan">
+  <meta name="citation_publication_date" content="2024/10/30">
+  <meta name="citation_online_date" content="2024/10/30">
+  <meta name="citation_pdf_url" content="https://natarajsundar.github.io/papers/vendor-management-platform-architecture/inside-the-vendor-management-platform-architecture-technical-report.pdf">
+  <meta name="citation_abstract_html_url" content="https://natarajsundar.github.io/papers/vendor-management-platform-architecture/">
+  <meta name="citation_fulltext_html_url" content="https://natarajsundar.github.io/papers/vendor-management-platform-architecture/">
+  <meta name="citation_keywords" content="vendor management platform; enterprise integration; digital commerce; API integration; iPaaS; observability; vendor onboarding; dependency injection">
+  <link rel="alternate" type="application/pdf" href="https://natarajsundar.github.io/papers/vendor-management-platform-architecture/inside-the-vendor-management-platform-architecture-technical-report.pdf">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Inside the Vendor Management Platform's Architecture",
+    "author": [
+      {"@type": "Person", "name": "Nataraj Agaram Sundar"},
+      {"@type": "Person", "name": "Tejas Morabia"},
+      {"@type": "Person", "name": "Hari Rangarajan, Ph.D."},
+      {"@type": "Person", "name": "Piyush Shrivastava"},
+      {"@type": "Person", "name": "Jeganathan Srinivasan"}
+    ],
+    "datePublished": "2024-10-30",
+    "description": "Scholar-ready technical report on eBay's Vendor Management Platform (VMP), standardizing vendor onboarding, connectors, and lifecycle operations at scale.",
+    "url": "https://natarajsundar.github.io/papers/vendor-management-platform-architecture/",
+    "sameAs": "https://natarajsundar.github.io/papers/vendor-management-platform-architecture/inside-the-vendor-management-platform-architecture-technical-report.pdf",
+    "isAccessibleForFree": true,
+    "image": "https://natarajsundar.github.io/papers/vendor-management-platform-architecture/vmp-preview.png",
+    "keywords": ["vendor management platform", "enterprise integration", "digital commerce", "API integration", "iPaaS", "observability", "vendor onboarding", "dependency injection"]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">Nataraj Agaram Sundar</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/publications/">Publications</a>
+        <a href="/papers/chargebacks-agentic-ai/">Featured paper</a>
+      </nav>
+    </div>
+  </header>
+  <main class="paper-wrapper">
+    <div class="container paper-shell">
+      <div class="paper-actions">
+        <a class="button primary" href="/papers/vendor-management-platform-architecture/inside-the-vendor-management-platform-architecture-technical-report.pdf">Download PDF</a>
+        <a class="button" href="/publications/">Back to publications</a>
+      </div>
+      <article class="paper">
+        <div class="paper-meta-line">Technical report | October 30, 2024</div>
+        <h1 class="paper-title">Inside the Vendor Management Platform's Architecture</h1>
+        <div class="paper-authors">Nataraj Agaram Sundar; Tejas Morabia; Hari Rangarajan, Ph.D.; Piyush Shrivastava; Jeganathan Srinivasan</div>
+        <div class="paper-affiliation">eBay Inc.</div>
+        <div class="paper-contact">Hosted on the personal publications site of Nataraj Agaram Sundar</div>
+        <section class="abstract-card" aria-labelledby="abstract-heading">
+          <h2 id="abstract-heading">Abstract</h2>
+          <p>This technical report adapts the LinkedIn article <em>Inside the Vendor Management Platform's Architecture</em> into a Scholar-ready format. It describes how eBay approached vendor integration at scale by introducing a Vendor Management Platform (VMP) to standardize onboarding, vendor metadata, connector patterns, and lifecycle operations across more than 50 payment and risk vendors. The report contrasts a code-heavy, iPaaS-like current state with a bottom-up VMP architecture centered on connector standardization, controlled execution, guard rails, and reusable platform services.</p>
+          <p class="keywords"><strong>Keywords:</strong> vendor management platform, enterprise integration, digital commerce, API integration, iPaaS, observability, vendor onboarding, dependency injection</p>
+          <p class="note"><strong>Author note:</strong> This technical report adapts the LinkedIn article <em>Inside the Vendor Management Platform's Architecture</em>, published October 30, 2024, into a Scholar-ready archival format. The figures in this web version are extracted from the accompanying report assets.</p>
+        </section>
+        <section id="challenge">
+          <h2>1. The Challenge in Digital Commerce</h2>
+          <p>Marketplaces rely on essential vendor integrations, varying from a few to dozens, depending on size and scope. A small domestic marketplace might suffice with one payment gateway and a couple of risk tools, while a larger international one may require multiple gateways, along with risk management, compliance, AML, and sanctions screening tools. At eBay, the platform integrates with more than 50 vendors to manage payments and risk operations.</p>
+          <p>Historically, dispersed vendor management across platforms or departments led to complex infrastructure, duplication, limited standardization, and unnecessary cost. The attached report argues that organizations should treat this as a platform problem, not a sequence of one-off integrations.</p>
+        </section>
+        <section id="introducing-vmp">
+          <h2>2. Introducing the Vendor Management Platform (VMP)</h2>
+          <p>To address those inefficiencies, eBay introduced the Vendor Management Platform (VMP) as a centralized hub for vendor assessment, onboarding, integration planning, metadata management, and lifecycle operations. The initial focus is API-based integrations, with the goal of simplifying onboarding, improving issue detection and resolution, and reducing operational cost for both eBay and its vendors.</p>
+        </section>
+        <section id="integration-types">
+          <h2>3. Integration Types</h2>
+          <p>API integrations typically require significant custom code for enrichment, persistence, observability, security, and capacity planning. The report contrasts this with the VMP approach, which standardizes the API integration path and reduces repeated engineering work for each new vendor.</p>
+        </section>
+        <section id="current-state">
+          <h2>4. Understanding Vendor Integrations</h2>
+          <p>Before VMP, each vendor integration often required bespoke work for API calls, cache or database enrichment, persistence design, monitoring, audit hooks, network setup, and downstream capacity analysis. That pattern made integrations code-heavy and hard to standardize, especially when multiple applications depended on the same vendor.</p>
+          <figure>
+            <img src="vendor-platform-overview.png" alt="Current-state vendor integration without VMP, showing marketplace application flowing into vendor-specific integration code and repeated downstream handling for enrichment, persistence, monitoring, networking, and vendor APIs." loading="lazy">
+            <figcaption><strong>Figure 1.</strong> Current-state vendor integration without VMP. Each marketplace application carries vendor-specific code and repeatedly wires enrichment, persistence, observability, security, and capacity handling around each integration. <a href="vendor-platform-overview.pdf">PDF</a></figcaption>
+          </figure>
+        </section>
+        <section id="ipaas-vs-vmp">
+          <h2>5. iPaaS vs VMP</h2>
+          <p>Integration Platform as a Service (iPaaS) typically follows a top-down approach, focusing on integrating disparate systems at a high level without enforcing standardization at the registry and data sink levels. VMP takes the opposite direction: a bottom-up approach that standardizes connectors and dynamically assembles the right dependencies and configurations for each vendor within predefined platform standards.</p>
+          <p>This bottom-up design yields a cleaner and more maintainable integration landscape because new vendors can be introduced or modified without broad reconfiguration of the surrounding system.</p>
+        </section>
+        <section id="analysis">
+          <h2>6. Comparative Analysis</h2>
+          <p>VMP lets vendor-specific requirements drive the dynamic assembly and injection of dependencies, fostering a modular and scalable integration ecosystem. By standardizing connectors and decoupling execution logic from runtimes, the platform improves reliability, observability, and scalability relative to inconsistent iPaaS-like integration patterns.</p>
+        </section>
+        <section id="design">
+          <h2>7. High-Level Design</h2>
+          <p>At its core, VMP acts as the operational hub for vendor onboarding, controlled execution, logging, and recovery. The client component retains business logic, the data-source component supplies required inputs, and guard rails constrain VMP so it remains focused on vendor lifecycle execution rather than absorbing unrelated business logic.</p>
+          <figure>
+            <img src="vmp-target-architecture.png" alt="Vendor Management Platform target-state architecture showing onboarding UI, vendor registry, VMP runtime and data plane, standardized connectors, logging and recovery, vendor response lifecycle state, guard rails, vendor APIs, data-source provider, and client business logic executor." loading="lazy">
+            <figcaption><strong>Figure 2.</strong> Vendor Management Platform target-state architecture. VMP centralizes onboarding, connector standards, controlled execution, and recovery while keeping business logic in the client layer. <a href="vmp-target-architecture.pdf">PDF</a></figcaption>
+          </figure>
+          <figure>
+            <img src="vmp-workflow.png" alt="Vendor onboarding and execution workflow from onboarding request to onboarding UI, vendor registry, integration plan, required data inputs, data source component, VMP runtime, guard rails, connector execution, vendor API, vendor response, logging, recovery, observability, and client consumption." loading="lazy">
+            <figcaption><strong>Figure 3.</strong> Vendor onboarding and execution workflow, from registry and integration planning through VMP runtime, guard rails, connector execution, vendor response handling, and client consumption. <a href="vmp-workflow.pdf">PDF</a></figcaption>
+          </figure>
+        </section>
+        <section id="conclusion">
+          <h2>8. Conclusion</h2>
+          <p>The VMP architecture is intended to make vendor integration more standardized, scalable, and observable by centralizing onboarding, normalizing connectors, and separating business logic from vendor lifecycle execution. The broader claim is that organizations should stop treating each vendor integration as a bespoke engineering project and instead build a governed platform beneath the business workflow.</p>
+        </section>
+        <section id="references">
+          <h2>References</h2>
+          <ol class="references">
+            <li>Sundar, N., Morabia, T., Rangarajan, H., Shrivastava, P., &amp; Srinivasan, J. (2024, October 30). <em>Inside the Vendor Management Platform's Architecture</em>. LinkedIn.</li>
+          </ol>
+        </section>
+      </article>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">Nataraj Agaram Sundar | Technical writing and publications | Contact: <a href="https://www.linkedin.com/in/natarajsundar/">LinkedIn</a></div>
+  </footer>
+</body>
+</html>

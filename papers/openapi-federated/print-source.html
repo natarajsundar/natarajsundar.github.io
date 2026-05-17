@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Automation and Scaling of OpenAPI Integrations: A Federated Solution | Nataraj Agaram Sundar; Hari Rangarajan, Ph.D.; Tejas Morabia; Piyush Shrivastava; Shanmukha Vinnakota</title>
+<meta content="Scholar-ready technical-report edition of Automation and Scaling of OpenAPI Integrations: A Federated Solution." name="description"/>
+<link href="https://natarajsundar.github.io/papers/openapi-federated/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Automation and Scaling of OpenAPI Integrations: A Federated Solution" property="og:title"/>
+<meta content="Scholar-ready technical-report edition hosted on natarajsundar.github.io." property="og:description"/>
+<meta content="https://natarajsundar.github.io/papers/openapi-federated/" property="og:url"/>
+<meta content="https://natarajsundar.github.io/papers/openapi-federated/fig1-orion-link-overview.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Automation and Scaling of OpenAPI Integrations: A Federated Solution" name="twitter:title"/>
+<meta content="Scholar-ready technical-report edition hosted on natarajsundar.github.io." name="twitter:description"/>
+<meta content="https://natarajsundar.github.io/papers/openapi-federated/fig1-orion-link-overview.png" name="twitter:image"/>
+
+<meta content="Automation and Scaling of OpenAPI Integrations: A Federated Solution" name="citation_title"/>
+<meta content="Nataraj Agaram Sundar" name="citation_author"/>
+<meta content="Hari Rangarajan, Ph.D." name="citation_author"/>
+<meta content="Tejas Morabia" name="citation_author"/>
+<meta content="Piyush Shrivastava" name="citation_author"/>
+<meta content="Shanmukha Vinnakota" name="citation_author"/>
+<meta content="2025/08/08" name="citation_publication_date"/>
+<meta content="2025/08/08" name="citation_online_date"/>
+<meta content="https://natarajsundar.github.io/papers/openapi-federated/openapi-federated-technical-report.pdf" name="citation_pdf_url"/>
+<meta content="https://natarajsundar.github.io/papers/openapi-federated/" name="citation_abstract_html_url"/>
+<meta content="https://natarajsundar.github.io/papers/openapi-federated/" name="citation_fulltext_html_url"/>
+<meta content="OpenAPI; API gateway; federated architecture; client generation; managed service; sidecar; versioning; enterprise integration" name="citation_keywords"/>
+<link href="https://natarajsundar.github.io/papers/openapi-federated/openapi-federated-technical-report.pdf" rel="alternate" type="application/pdf"/>
+
+<style>
+    .paper figure { margin: 2rem 0; }
+    .paper figcaption { margin-top: 0.75rem; color: #4b5563; font-size: 0.95rem; line-height: 1.5; }
+    .mermaid-shell { border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; padding: 1rem; overflow-x: auto; }
+    .mermaid { text-align: center; }
+    .mermaid svg { max-width: 100%; height: auto; }
+    .source-links { font-size: 0.92rem; color: #52606d; margin-top: 0.5rem; }
+    .figure-image img { display: block; width: 100%; height: auto; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+    ol.tight > li, ul.tight > li { margin-bottom: 0.5rem; }
+  </style>
+
+<style>
+@page { size: Letter; margin: 0.7in; }
+body { font-family: Georgia, "Times New Roman", serif; color: #111827; line-height: 1.45; }
+main.paper-wrapper { margin: 0; }
+.paper-shell { max-width: 100%; margin: 0 auto; }
+.paper { max-width: none; }
+.paper-title { font-size: 24pt; line-height: 1.15; margin-bottom: 0.4rem; }
+.paper-authors, .paper-meta, .paper-contact { font-family: Arial, Helvetica, sans-serif; color: #374151; font-size: 10.5pt; }
+.abstract-card { border: 1px solid #d1d5db; padding: 14px; border-radius: 8px; background: #fafafa; }
+figure { margin: 1.0rem 0 1.2rem; break-inside: avoid; }
+.figure-image img { display:block; width:100%; height:auto; border: 1px solid #d1d5db; }
+figcaption { font-size: 9.5pt; color: #4b5563; margin-top: .45rem; }
+pre.mermaid, .source-links { display:none; }
+ol.references li { margin-bottom: .4rem; }
+h2, h3 { break-after: avoid; }
+a { color: #1d4ed8; text-decoration: none; }
+</style></head>
+<body>
+
+<main class="paper-wrapper">
+<div class="container paper-shell">
+<div class="paper-actions">
+<a class="button primary" href="/papers/openapi-federated/openapi-federated-technical-report.pdf">Download PDF</a>
+<a class="button" href="/publications/">Back to publications</a>
+</div>
+<article class="paper">
+<div class="paper-meta-line">Technical-report edition | First published August 8, 2025</div>
+<h1 class="paper-title">Automation and Scaling of OpenAPI Integrations: A Federated Solution</h1>
+<div class="paper-authors">Nataraj Agaram Sundar; Hari Rangarajan, Ph.D.; Tejas Morabia; Piyush Shrivastava; Shanmukha Vinnakota</div>
+<div class="paper-affiliation">eBay Inc.</div>
+<div class="paper-contact">Hosted on the personal publications site of Nataraj Agaram Sundar</div>
+<section aria-labelledby="abstract-heading" class="abstract-card">
+<h2 id="abstract-heading">Abstract</h2>
+<p>OpenAPI specifications standardize REST API contracts, but large organizations still face considerable complexity when consuming those APIs at scale. Developers must retrieve and interpret specification files, generate client code, configure authentication and retries, manage versioning, and keep integrations aligned across many teams. This technical-report edition describes Orion Link, a federated OpenAPI client gateway offered as a managed hosted service to centralize these concerns. Orion Link automates client generation, configuration management, version handling, monitoring, and extensibility while also supporting a sidecar deployment model for lower-latency execution. The article argues that a federated, centrally governed OpenAPI client layer can reduce repetitive boilerplate code, improve consistency across distributed teams, and simplify operational maintenance for HTTP-based integrations.</p>
+<p class="keywords"><strong>Keywords:</strong> OpenAPI, API gateway, federated architecture, managed hosted service, client generation, sidecar deployment, versioning, enterprise integration</p>
+<p class="note"><strong>Author note:</strong> This archival technical-report edition is adapted from the LinkedIn article first published on August 8, 2025. The web version below reconstructs the article diagrams as Mermaid diagrams for maintainability, while the downloadable PDF preserves a compile-ready version for scholarly indexing.</p>
+</section>
+<section id="introduction">
+<h2>1. Introduction</h2>
+<p>In the modern development landscape, OpenAPI specifications have become indispensable for creating uniform and well-documented APIs. However, as these standards permeate the industry, developers face new challenges in accessing and integrating REST APIs. Programmatically consuming APIs now involves understanding specification files, generating client code, implementing authentication protocols, and managing version control, all of which require additional skill and effort from end-user developers.</p>
+<p>These problems become more pronounced at organizational scale. When a single OpenAPI-backed service is consumed by hundreds of distributed teams, maintaining consistent integrations, managing configurations, and ensuring smooth version transitions create significant coordination overhead. Fragmented client implementations can lead to drift between teams, duplicated boilerplate, and higher maintenance cost.</p>
+<p>To address these challenges, this article introduces <em>Orion Link</em>, a federated OpenAPI client gateway offered as a managed hosted service. Orion Link centralizes client-side code generation, configuration management, and version control while preserving flexibility for runtime execution. The overall goal is to reduce developer effort and make API consumption more consistent, scalable, and maintainable across large organizations.</p>
+</section>
+<section id="vision">
+<h2>2. Orion Link Vision</h2>
+<p>Orion Link is a federated gateway connecting a wide array of auto-generated OpenAPI-based clients. By streamlining API consumption, automating client-side code generation, and managing configurations and versioning, Orion Link simplifies integration and maintenance. Its modular architecture fosters collaboration across diverse clients and development teams, ensuring efficient and scalable API interactions.</p>
+<figure>
+<div class="figure-image"><img alt="Figure 1" src="fig1-orion-link-overview.png"/></div>
+<figcaption><strong>Figure 1.</strong> Mermaid reconstruction of the Orion Link overall picture. Orion Link sits between distributed clients and API servers while centralizing generated-client libraries, deployment models, configuration/version governance, and operational extensions.</figcaption>
+</figure>
+
+</section>
+<section id="features">
+<h2>3. Features</h2>
+<ul class="tight">
+<li><strong>OpenAPI Centric:</strong> All clients are generated from standard OpenAPI specifications, ensuring consistency and type safety.</li>
+<li><strong>Managed Service:</strong> Orion Link runs as a hosted gateway that applications call to execute requests. It handles the overhead of fetching specs, generating code, and orchestrating traffic.</li>
+<li><strong>Client-Side Focus:</strong> Despite being centrally hosted, Orion Link is designed to inject or sidecar the generated client logic near the application's runtime, minimizing latency while still benefiting from centralized configuration, monitoring, and version control.</li>
+<li><strong>Sidecar Model:</strong> Applications can run an Orion Link sidecar container or module in the same pod or runtime environment. This bypasses a remote server hop for critical paths while still consuming centrally managed configuration.</li>
+</ul>
+</section>
+<section id="scenarios">
+<h2>4. Practical Usage Scenarios</h2>
+<p>Orion Link is particularly effective for applications integrating with external services using standard HTTP APIs. By generating structured client-side code from OpenAPI specifications, Orion Link simplifies configuration management and version control. It is especially attractive in environments that prioritize consistency, streamlined API consumption, and lower maintenance overhead.</p>
+<p>Because the platform reduces repeated work such as setting up HTTP clients, wiring connections, and re-implementing retries or serializers, development teams can avoid fragmented client logic. Its automatic versioning model also helps organizations adapt to frequently changing APIs without repeated manual redeployments. In large-scale operations, Orion Link supports consistency across many API consumers by giving teams a centralized management layer instead of duplicated integration code.</p>
+</section>
+<section id="value">
+<h2>5. Value Addition</h2>
+<p>Orion Link accelerates development by automatically generating client code from OpenAPI specifications, greatly reducing developer effort and eliminating duplication. By centralizing client generation and deployment, it reduces integration errors and enforces more consistent handling across teams. Applications can also benefit from a smaller runtime footprint by reusing Orion Link's managed connection pools and centralized configuration.</p>
+<p>Managed deployments and versioning enable updates without hand-maintained redeployments, allowing teams on different platforms to keep using a shared integration layer. The main trade-off is additional latency from an extra hop per request, roughly a two-hop cost in hosted mode, though that can be mitigated in many cases with the sidecar model.</p>
+</section>
+<section id="usage-ebay">
+<h2>6. Usage Within eBay</h2>
+<p>The article identifies vendor-management workloads as a primary target. Communications with external vendors usually happen through REST endpoints defined by OpenAPI contracts, making them strong candidates for a shared federated client gateway. The same architecture is also positioned as useful for rapid prototyping against new services and for low-traffic internal services where the effort of creating and maintaining dedicated OpenAPI clients would otherwise exceed the value of the integration.</p>
+</section>
+<section id="limitations">
+<h2>7. Limitations</h2>
+<p>Despite its benefits, Orion Link is not a universal integration layer. It introduces additional latency because requests often take an extra hop through the gateway, which may be unsuitable for ultra-low-latency systems. Although the sidecar or direct library model can reduce that overhead, the architecture is still best aligned with workflows where reliability, consistency, and ease of integration are more important than absolute speed.</p>
+<p>Orion Link is also not designed for real-time communication patterns such as WebSockets or gRPC streaming. Its strengths lie in transactional, HTTP-based API interactions rather than low-latency bidirectional data exchange.</p>
+</section>
+<section id="e2e-sequence">
+<h2>8. Core Workings</h2>
+<h3>8.1 Complete End-to-End Sequence</h3>
+<p>Figure 2 summarizes the main onboarding and runtime sequence. A developer or application first retrieves an OpenAPI specification, submits the specification and configuration into Orion Link, and triggers generation of a strongly typed client. Orion Link then configures validation, observability, deployment targets, and optional extensions before serving runtime requests through a hosted gateway or a local sidecar.</p>
+<figure>
+<div class="figure-image"><img alt="Figure 2" src="fig2-e2e-sequence.png"/></div>
+<figcaption><strong>Figure 2.</strong> Mermaid reconstruction of the complete end-to-end onboarding and execution flow for an Orion Link-backed API integration.</figcaption>
+</figure>
+
+<h3>8.2 End-user / Developer Actions</h3>
+<ol class="tight">
+<li><strong>Request External API Spec:</strong> The application or developer obtains the desired OpenAPI specification from an external server or public repository.</li>
+<li><strong>Receive the Spec:</strong> The application receives the YAML or JSON contract describing endpoints, parameters, and payloads.</li>
+<li><strong>Onboard Spec + SLA Config into Orion Link:</strong> The application or DevOps team provides Orion Link with the spec and any custom configurations such as SLA requirements, retries, timeouts, or error-handling rules.</li>
+</ol>
+<h3>8.3 Orion Core Engine Internal Process Setup</h3>
+<ol class="tight">
+<li><strong>Generate Client:</strong> Orion Link produces a strongly typed client ahead of time and caches it.</li>
+<li><strong>Validation and Schema Handling:</strong> The service configures request and response validation according to OpenAPI definitions.</li>
+<li><strong>Monitoring, Logging, and Dashboards:</strong> Orion Link adds metrics, logging hooks, and dashboards for calls made through the generated client.</li>
+<li><strong>Add to Client Library:</strong> The generated client is inserted into a central registry and can then be injected into hosted execution or sidecar environments.</li>
+</ol>
+<h3>8.4 Dynamic Configuration Actions</h3>
+<ol class="tight">
+<li><strong>Selective or Shared Pools:</strong> Clients can use dedicated pools for particular versions or shared pools for heterogeneous use cases.</li>
+<li><strong>Choose the Right Client:</strong> Orion Link selects the correct versioned client, applies interceptors such as authentication or caching, and performs the call.</li>
+</ol>
+<h3>8.5 API Invocation and Sidecar Deployment</h3>
+<ol class="tight">
+<li><strong>Application Makes the Call:</strong> The application invokes Orion Link or the local sidecar with the destination and payload.</li>
+<li><strong>Return Response:</strong> The response from the external service is returned, optionally filtered through validation, logging, or plug-and-play modules.</li>
+<li><strong>Server-Injected Config:</strong> In sidecar mode, Orion Link can push updated configurations so the sidecar always has current client code and connection settings.</li>
+<li><strong>Local Bypass:</strong> The application can call the sidecar locally, avoiding a remote server hop for latency-sensitive paths.</li>
+</ol>
+</section>
+<section id="config-model">
+<h2>9. Configuration Model</h2>
+<p>Orion Link's configuration model is environment-aware and extensible. Teams can define multiple environments such as staging and production, attach authentication tokens globally or per environment, tune HTTP methods and request/response schemas, and set retries, timeouts, logging thresholds, payload size limits, or rate limits. The model also supports advanced extensions such as request transformations, specialized error handling, and A/B testing.</p>
+<p>Warmup behavior is centralized on the server so that generated clients are ready for use without additional client-side complexity. By consolidating these settings into a YAML or JSON configuration or a central console, Orion Link becomes a single source of truth for generated clients.</p>
+</section>
+<section id="hosted-service">
+<h2>10. Managed Hosted Service</h2>
+<p>The managed hosted service exposes standard endpoints for registering service configurations and OpenAPI specifications, then forwarding runtime execution to the correct generated client. Orion Link pre-generates, warms up, and caches clients so execution is ready from the outset, reducing the need for warmup code or preload logic in application teams.</p>
+</section>
+<section id="extensions">
+<h2>11. Plug-and-Play Extensions</h2>
+<p>Orion Link's extension system allows teams to add custom functionality at different points in the request lifecycle. Extensions can retrieve tokens or run OAuth flows, apply business-specific validation beyond the OpenAPI schema, and integrate caching modules for frequently repeated requests.</p>
+</section>
+<section id="centralization">
+<h2>12. Centralization</h2>
+<p>The platform also centralizes logging, analytics, and warmup behavior. Logs, metrics, and traces can be directed to a preferred observability stack, while preloading and warmup routines remain on the server. This keeps client environments simpler and makes the platform adaptable across diverse application needs.</p>
+</section>
+<section id="implementation-specifics">
+<h2>13. Implementation Specifics</h2>
+<p>Figure 3 provides a high-level view of how declarative configuration drives the end-to-end flow. Metadata held in Orion's configuration registry is split into client-side and server-call configuration, then loaded into Orion's target client at runtime. The numbered sequence links the client application, Orion server, target service, and target-server properties into a single configurable flow.</p>
+<figure>
+<div class="figure-image"><img alt="Figure 3" src="fig3-config-overview.png"/></div>
+<figcaption><strong>Figure 3.</strong> Mermaid reconstruction of the declarative configuration model that drives Orion Link's end-to-end execution path.</figcaption>
+</figure>
+
+</section>
+<section id="summary">
+<h2>14. Summary</h2>
+<p>Orion Link is positioned as a federated OpenAPI client gateway and managed hosted service that improves how applications consume APIs. It automates client generation from OpenAPI specifications, streamlines configuration management, handles versioning, and supports monitoring plus extensibility through plug-and-play modules. This centralized gateway approach removes the need to reproduce boilerplate client code across many teams and helps maintain consistency across client applications.</p>
+<p>The article frames Orion Link as a response to the persistent problem of boilerplate and fragmentation: teams repeatedly rebuild HTTP clients, retries, serializers, and connection management for each new API. By consolidating those efforts in a federated control plane, organizations can reduce maintenance cost, improve agility, and lower the risk of inconsistent best practices.</p>
+<p>To conclude, Orion Link is presented as a dependable abstraction for connecting client applications and diverse APIs with a clean and consistent client approach that can adapt to change without the usual operational overhead.</p>
+</section>
+<section id="references">
+<h2>15. References</h2>
+<ol class="references">
+<li>OpenAPI Initiative. <em>OpenAPI Specification, Version 3.1.1</em>. OpenAPI Initiative, 2024.</li>
+<li>OpenAPI Generator project. <em>OpenAPI Generator Documentation</em>.</li>
+<li>Hardt, D. <em>The OAuth 2.0 Authorization Framework</em>. RFC 6749. IETF, 2012.</li>
+<li>Jones, M. and Hardt, D. <em>The OAuth 2.0 Authorization Framework: Bearer Token Usage</em>. RFC 6750. IETF, 2012.</li>
+<li>Fielding, R., Nottingham, M., and Reschke, J. <em>HTTP Semantics</em>. RFC 9110. IETF, 2022.</li>
+<li>Fielding, Roy. <em>Architectural Styles and the Design of Network-based Software Architectures</em>. Doctoral dissertation, University of California, Irvine, 2000.</li>
+<li>Dean, Jeffrey and Barroso, Luiz André. “The Tail at Scale.” <em>Communications of the ACM</em> 56, no. 2 (2013): 74–80.</li>
+<li>Newman, Sam. <em>Building Microservices: Designing Fine-Grained Systems</em>. 2nd ed. O’Reilly Media, 2021.</li>
+<li>Richardson, Leonard and Ruby, Sam. <em>RESTful Web APIs</em>. O’Reilly Media, 2013.</li>
+</ol>
+</section>
+</article>
+</div>
+</main>
+
+</body>
+</html>
